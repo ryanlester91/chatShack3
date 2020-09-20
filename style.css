@@ -26,7 +26,14 @@ h2 {
     border-radius: 2px;
 }
 
-#chat-window {
+#username, #textarea {
+    background: #292C34;
+    color: #aaa;
+    padding: 14px 0px;
+    
+}
+
+#messages {
     height: 400px;
     overflow: auto;
     background: #292C34;
