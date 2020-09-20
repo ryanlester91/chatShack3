@@ -1,17 +1,17 @@
 const mongo = require('mongodb').MongoClient;
-const client = require('socket.io').listen(4000).sockets;
+const socket = require('socket.io').listen(4000).sockets;
 
 //Connect to MongoDB
-mongo.connect('mongodb://127.0.0.1/mongochat', function(err, db) {
+mongo.connect('mongodb://127.0.0.1/mongochat', (err, client) {
     if(err){
         throw err;
     }
-
-    
     console.log('MongoDB connected...');
+    const db = client.db('mongochat');
+
     //connect to Socket.io
-    client.on('connection', function(socket) {
-        let chat = db.collection('chats')
+    socket.on('connection', function(socket) {
+        //let chat = client.db('mongochat').collection('chats')
 
         // Create function to send status
         sendStatus = function(s) {
