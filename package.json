@@ -1,0 +1,24 @@
+{
+  "name": "chatshack3",
+  "version": "1.0.0",
+  "description": "chat app practice with MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanlester91/chatShack3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanlester91/chatShack3/issues"
+  },
+  "homepage": "https://github.com/ryanlester91/chatShack3#readme",
+  "dependencies": {
+    "mongodb": "^3.6.2",
+    "socket.io": "^2.3.0"
+  }
+}
