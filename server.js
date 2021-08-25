@@ -1,5 +1,6 @@
+//Should I include express? Utils?
 const mongo = require('mongodb').MongoClient;
-const socket = require('socket.io').listen(4000).sockets;
+const io = require('socket.io').listen(4000).sockets;
 
 //Connect to MongoDB
 mongo.connect('mongodb://127.0.0.1/mongochat', (err, client) {
@@ -7,11 +8,12 @@ mongo.connect('mongodb://127.0.0.1/mongochat', (err, client) {
         throw err;
     }
     console.log('MongoDB connected...');
+    //What to do with db variable?
     const db = client.db('mongochat');
 
     //connect to Socket.io
-    socket.on('connection', function(socket) {
-        //let chat = client.db('mongochat').collection('chats')
+    io.on('connection', function(socket) {
+        let chat = client.db('mongochat').collection('chats')
 
         // Create function to send status
         sendStatus = function(s) {
@@ -28,7 +30,7 @@ mongo.connect('mongodb://127.0.0.1/mongochat', (err, client) {
         });
 
         //Handle input events
-        socket.on('input', function(data){
+        io.on('input', function(data){
             let name = data.name;
             let message = data.message;
 
@@ -51,7 +53,7 @@ mongo.connect('mongodb://127.0.0.1/mongochat', (err, client) {
         })
 
         //Handle clear
-        socket.on('clear', function(data){
+        io.on('clear', function(data){
             //Remove all chats from collection
             chat.remove({}, function(){
                 //Emit cleared

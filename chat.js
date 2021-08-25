@@ -1,5 +1,7 @@
 // Make connection
+const io = require('socket.io').listen(4000).sockets;
 let socket = io.connect('http://localhost:4000');
+//let socket = io.connect('http://127.0.0.1:4000');
 
 //Query DOM
 // Query DOM
